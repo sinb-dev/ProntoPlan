@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/jquery-ui.min.css"></script>
+    <link rel="stylesheet" type="text/css" href="styles/layout.css"></script>
+    <link rel="stylesheet" type="text/css" href="styles/prontoplan.css"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-2" id="cards" style="padding:30px">
+            <div class="card course-1">Serverside</div>
+            <div class="card course-1">Serverside</div>
+            <div class="card course-2">App 3</div>
+            <div class="card course-3">App 3</div>
+            <div class="card course-3">App 3</div>
+            <div class="card course-4">Systemudvikling</div>
+            <div class="card course-4">Systemudvikling</div>
+        </div>
+        <div class="col-10" style="padding:0px">
+            <div class="row">
+                <div class="col-">Uge 44</div>
+            </div> 
+            <div class="row">
+                <div class="col-2 heading">Mandag</div>
+                <div class="col-2 heading">Tirsdag</div>
+                <div class="col-2 heading">Onsdag</div>
+                <div class="col-2 heading">Torsdag</div>
+                <div class="col-2 heading">Fredag</div>
+            </div> 
+            <div class="row">
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+            </div>
+            <div class="row">
+                <div class="col-">Eftermiddag</div>
+            </div>
+            <div class="row">
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+            </div>
+            <div class="row">
+                <div class="col-">Uge 45</div>
+            </div> 
+            <div class="row">
+                <div class="col-2 heading">Mandag</div>
+                <div class="col-2 heading">Tirsdag</div>
+                <div class="col-2 heading">Onsdag</div>
+                <div class="col-2 heading">Torsdag</div>
+                <div class="col-2 heading">Fredag</div>
+            </div> 
+            <div class="row">
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+            </div>
+            <div class="row">
+                <div class="col-">Eftermiddag</div>
+            </div>
+            <div class="row">
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+                <div class="col-2 slot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+$("#cards, .slot").sortable({
+    connectWith: ".slot, #cards",
+    placeholder: "placeholder",
+    receive(evt, ui) {
+        if ($(this).children().length > 1 && $(this).attr("id") != "cards") {
+            //ui.sender: will cancel the change.
+            //Useful in the 'receive' callback.
+            $(ui.sender).sortable('cancel');
+        }
+    }
+}).disableSelection()
+
+
+function resizeCards() {
+    var nodes = document.getElementsByClassName("card");
+    
+    for (var i in nodes)
+    {
+        console.log(nodes[i])
+        var rect = nodes[i].getBoundingClientRect();
+        nodes[i].style.height = (rect.left/1.618)+"px"
+    }
+
+}
+resizeCards();
+window.onresize = resizeCards;
+    /*var target_slot = null
+    var dragged_card = null
+    var posx = 
+    $("div.cardslot").droppable({ accept : ".card",  hoverClass:"hello", 
+    over(n) {
+        target_slot = n.currentTarget
+    },
+    out() {
+        target_slot = null
+    } })
+
+    $(".card").draggable(  {
+        axis: "y", 
+        snapMode : "inner",
+        snap: '.cardslot',
+        start(event, ui) {
+            dragged_card = event.target
+            
+        },
+        stop(event,ui) {
+            if (target_slot != null) {
+                dragged_card.parent = target_slot
+                console.log(dragged_card)
+                dragged_card.className = "card"
+            }
+        }
+    } )
+    //$( ".card" ).draggable( "option", "grid", [ 50, 20 ] );*/
+    </script>
+</body>
+</html>

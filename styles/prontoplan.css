@@ -1,0 +1,31 @@
+div.slot {
+    height:150px;
+    
+  }
+.card {
+    margin-left: 5px;
+    margin-right: 5px;
+    min-height:100px
+    
+}
+
+.placeholder {
+    border: 1px dotted black;
+    margin: 0 1em 1em 0;
+    height: 50px;
+    background:gray
+  }
+
+  
+.course-1 {
+    background: orange;
+}
+.course-2 {
+    background:palegreen;
+}
+.course-3 {
+    background:peachpuff;
+}
+.course-4 {
+    background:powderblue;
+}
